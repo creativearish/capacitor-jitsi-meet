@@ -22,6 +22,7 @@ import org.jitsi.meet.sdk.BroadcastIntentHelper;
   )
 public class Jitsi extends Plugin {
     private static final String TAG = "CapacitorJitsiMeet";
+    JitsiBroadcastReceiver receiver = new JitsiBroadcastReceiver();
 
     @PluginMethod()
     public void joinConference(PluginCall call) {
@@ -37,7 +38,6 @@ public class Jitsi extends Plugin {
         Boolean inviteEnabled = call.getBoolean("inviteEnabled");
         Boolean callIntegrationEnabled = call.getBoolean("callIntegrationEnabled");
 
-        JitsiBroadcastReceiver receiver = new JitsiBroadcastReceiver();
         receiver.setModule(this);
         IntentFilter filter = new IntentFilter();
         filter.addAction("onConferenceWillJoin");
